@@ -12,6 +12,11 @@ updates:
       frontend:
         patterns: ["*"]
         update-types: [minor, patch]
+    ignore:
+      # v5 renames the series API (addCandlestickSeries and friends) and ships ESM that
+      # CRA's Jest cannot parse. Migrate deliberately, then drop this ignore.
+      - dependency-name: lightweight-charts
+        update-types: [version-update:semver-major]
 
   - package-ecosystem: pip
     directory: /backend
